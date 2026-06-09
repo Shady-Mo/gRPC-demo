@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "PaymentService.Protos";
+import "google/protobuf/empty.proto";
+
+package payment;
+
+message DeductPaymentRequest {
+	int32 id = 1;
+	int32 amount = 2;
+}
+
+message DeductPaymentResponse {
+	bool success = 1;
+	string message = 2;
+}
+
+service PaymentProtoService {
+	rpc DeductPayment(DeductPaymentRequest) returns (DeductPaymentResponse);
+}

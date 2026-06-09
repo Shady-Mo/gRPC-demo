@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "InventoryService.Protos";
+import "google/protobuf/empty.proto";
+
+package inventory;
+
+message Item {
+	int32 id = 1;
+	int32 quantity = 2;
+}
+
+message DeductQuantityRequest {
+	repeated Item items = 1;
+}
+
+message DeductQuantityResponse {
+	bool success = 1;
+	string message = 2;
+}
+
+message GetInventoryRequest {
+	int32 item_id = 1;
+}
+
+message GetInventoryResponse {
+	int32 item_id = 1;
+	int32 quantity = 2;
+}
+
+message GetAllInventoriesResponse {
+	repeated Item items = 1;
+}
+
+service InventoryProtoService {
+	rpc DeductQuantity(DeductQuantityRequest) returns (DeductQuantityResponse);
+	rpc GetInventory(GetInventoryRequest) returns (GetInventoryResponse);
+	rpc GetAllInventories(google.protobuf.Empty) returns (GetAllInventoriesResponse);
+}
