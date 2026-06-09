@@ -1,6 +1,6 @@
 # 🛒 ECommerce Microservices Solution
 
-> A high-performance, distributed e-commerce backend built with **.NET 9**, demonstrating **Microservices Architecture**, inter-service communication via binary **gRPC**, and hybrid client interaction utilizing **gRPC-JSON Transcoding**.
+> A high-performance, distributed e-commerce backend built with **.NET 10**, demonstrating **Microservices Architecture**, inter-service communication via binary **gRPC**, and hybrid client interaction utilizing **gRPC-JSON Transcoding**.
 
 ---
 
@@ -16,15 +16,15 @@ The ecosystem consists of three specialized microservices working together to pr
 
 ```
                         ┌──────────────────────────────┐
-External Clients  ───▶  │         OrderService          │
+External Clients  ───▶  │         OrderService         │
   REST / gRPC           │   (Hybrid Facade + gRPC-JSON  │
-                        │         Transcoding)           │
+                        │         Transcoding)          │
                         └───────────┬──────────┬────────┘
                                     │          │
                               gRPC  │          │  gRPC
                                     ▼          ▼
                         ┌───────────────┐  ┌─────────────────┐
-                        │InventoryService│  │  PaymentService  │
+                        │InventoryService│ │  PaymentService │
                         │  (Pure gRPC)  │  │   (Pure gRPC)   │
                         └───────────────┘  └─────────────────┘
 ```
@@ -51,19 +51,19 @@ By annotating the `.proto` service definition, the service dynamically generates
 ### Protocol Routing Mechanics
 
 ```
-┌─────────────────────┐     HTTP/1.1 REST JSON      ┌──────────────────┐
-│  Frontend / Web App  │ ─────────────────────────▶  │                  │
+┌─────────────────────┐     HTTP/1.1 REST JSON       ┌──────────────────┐
+│  Frontend / Web App │ ─────────────────────────▶  │                  │
 └─────────────────────┘                              │   OrderService   │
                                                      │  :5070 / :7150   │
 ┌─────────────────────┐     HTTP/2 TLS + gRPC        │                  │
-│  Postman gRPC Client │ ─────────────────────────▶  │                  │
+│  Postman gRPC Client│ ─────────────────────────▶  │                  │
 └─────────────────────┘   (Server Reflection)        └────────┬─────────┘
                                                               │
                                               Binary gRPC RPC │ (HTTP/2)
                                                               │
                              ┌────────────────────────────────┴──────────────────────────────┐
-                             │                                                                │
-                             ▼                                                                ▼
+                             │                                                               │
+                             ▼                                                               ▼
                   ┌──────────────────────┐                                      ┌──────────────────────┐
                   │   InventoryService   │                                      │    PaymentService    │
                   │       :5144          │                                      │       :5071          │
