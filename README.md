@@ -195,9 +195,3 @@ app.UseCors("AllowAll"); // Must be placed before UseAuthorization
 ├── index.html                # Web REST UI Tester
 └── ECommerce.sln
 ```
-
----
-
-## 📄 License
-
-MIT
