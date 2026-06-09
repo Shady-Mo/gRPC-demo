@@ -52,11 +52,11 @@ By annotating the `.proto` service definition, the service dynamically generates
 
 ```
 ┌─────────────────────┐     HTTP/1.1 REST JSON       ┌──────────────────┐
-│  Frontend / Web App │ ─────────────────────────▶  │                  │
+│ Frontend / Web App  │ ─────────────────────────▶  │                  │
 └─────────────────────┘                              │   OrderService   │
                                                      │  :5070 / :7150   │
 ┌─────────────────────┐     HTTP/2 TLS + gRPC        │                  │
-│  Postman gRPC Client│ ─────────────────────────▶  │                  │
+│ Postman gRPC Client │ ─────────────────────────▶  │                  │
 └─────────────────────┘   (Server Reflection)        └────────┬─────────┘
                                                               │
                                               Binary gRPC RPC │ (HTTP/2)
