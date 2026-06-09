@@ -82,7 +82,7 @@ By annotating the `.proto` service definition, the service dynamically generates
 
 | Category | Technology |
 |---|---|
-| **Runtime** | .NET 9 SDK |
+| **Runtime** | .NET 10 SDK |
 | **Protocols** | gRPC (HTTP/2), REST (HTTP/1.1 via Transcoding) |
 | **API Documentation** | OpenAPI / Swagger |
 | **Serialization** | Protocol Buffers (Proto3), JSON |
@@ -93,11 +93,11 @@ By annotating the `.proto` service definition, the service dynamically generates
 
 ### 1. Prerequisites
 
-Ensure you have the latest [**.NET 9 SDK**](https://dotnet.microsoft.com/download/dotnet/9.0) installed.
+Ensure you have the latest [**.NET 10 SDK**](https://dotnet.microsoft.com/download/dotnet/10.0) installed.
 
 ```bash
 dotnet --version
-# Should output 9.x.x
+# Should output 10.x.x
 ```
 
 ### 2. Running the Solution
